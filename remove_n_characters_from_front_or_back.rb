@@ -42,7 +42,7 @@ ITunes.app do |itunes|
 		name = track.name
 		if !rff.nil?
 			#name is an immutable .NET string
-			name.slice!(rff..-1) 
+			name = name.slice(rff..-1) 
 		end
 		
 		if !rfb.nil?
