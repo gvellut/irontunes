@@ -39,7 +39,15 @@ ITunes.app do |itunes|
 
 	1.upto(sels.count) do |i|
 		track = sels.item(i)
-		name = track.name
+		
+		if scope == "n"
+			name = track.name
+		elsif scope =="l"
+			name = track.album
+		else
+			name = track.artist
+		end
+		
 		if !rff.nil?
 			#name is an immutable .NET string
 			name = name.slice(rff..-1) 
@@ -49,6 +57,13 @@ ITunes.app do |itunes|
 			name = name.slice(0..-(rfb+1))
 		end
 		
-		track.name = name
+		if scope == "n"
+			track.name = name
+		elsif scope =="l"
+			track.album = name
+		else
+			track.artist = name
+		end
+
 	end
 end
